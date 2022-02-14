@@ -1,5 +1,5 @@
 import React, { ContextType, useContext, useState } from "react";
-import { userdata, userData } from "../../FirebaseConfig/firebase";
+import { userData } from "../../FirebaseConfig/firebase";
 
 var func!: React.Dispatch<React.SetStateAction<userData>>;
 var setUser!: (bool: Boolean) => void;

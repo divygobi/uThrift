@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth"
+import { getFirestore } from "firebase/firestore";
 import { promisify } from "util";
 import { useEffect } from "react";
 
@@ -22,6 +23,7 @@ const analytics = getAnalytics(app);
 export var auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
+const db = getFirestore();
 
 //function to sign in
 

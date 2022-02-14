@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const emotionCache = clientSideEmotionCache
   const [data, setData] = React.useState(userdata)
   React.useEffect(() => {
-    onAuthStateChanged(getAuth(app), (user) => {
+    onAuthStateChanged(getAuth(), (user) => {
       if (user) {
         setData({
           isSignedIn: true,
@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     }
     )
-  })
+  }, [])
 
   return (
     <>

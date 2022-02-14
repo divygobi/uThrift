@@ -1,24 +1,24 @@
 import * as React from 'react';
+//import Link from '../Tools/Link';
+import Link from 'next/link'
+import { NextLinkComposed } from '../Tools/Link';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import { Avatar, Button, FormGroup, Menu, MenuItem, Switch } from '@mui/material';
 import { AuthContext } from '../pages/api/authContext';
 import { useContext } from 'react';
-import { AccountCircle } from '@mui/icons-material';
 
 
 export default function MenuAppBar() {
     let value = useContext(AuthContext);
-    const user = value[0]
-    const setAuth = value[1]
-    var auth: Boolean = false;
-    if (value[0] !== undefined) {
-        auth = user.isSignedIn;
-    }
+    const user = value[0];
+    const [auth, setAuth] = React.useState<Boolean>(false);
+    React.useEffect(() =>
+        setAuth(user.isSignedIn)
+    )
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -65,6 +65,10 @@ export default function MenuAppBar() {
                             >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <Link href="/store" passHref>
+                                    <MenuItem onClick={handleClose}>Store</MenuItem>
+                                </Link>
+
                             </Menu>
                         </div>
                     )}
