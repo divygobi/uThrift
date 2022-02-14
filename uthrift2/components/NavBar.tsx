@@ -1,7 +1,5 @@
 import * as React from 'react';
-//import Link from '../Tools/Link';
-import Link from 'next/link'
-import { NextLinkComposed } from '../Tools/Link';
+import NextLink from 'next/link'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -33,9 +31,11 @@ export default function MenuAppBar() {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        uThrift
-                    </Typography>
+                    <NextLink href="/">
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            uThrift
+                        </Typography>
+                    </NextLink>
                     {auth && (
                         <div>
                             <IconButton
@@ -65,9 +65,9 @@ export default function MenuAppBar() {
                             >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                                <Link href="/store" passHref>
-                                    <MenuItem onClick={handleClose}>Store</MenuItem>
-                                </Link>
+                                <NextLink href="/store">
+                                    <MenuItem>Store</MenuItem>
+                                </NextLink>
 
                             </Menu>
                         </div>
